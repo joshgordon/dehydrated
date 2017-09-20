@@ -1,8 +1,9 @@
 private_key.pem
 private_key.json
 domains.txt
-config
+secret
 hook.sh
+certs
 certs/*
 archive/*
 accounts/*
