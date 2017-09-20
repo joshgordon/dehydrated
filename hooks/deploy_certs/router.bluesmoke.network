@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# this will work pretty much as-is for a mikrotik router, you'll have to change the domain name
+# of the router and the name of the certs, but it should just work. 
+
 # $1 = domainname
 # $2 = private key
 # $3 = cert /scratch/services/dehydrated/certs/.../cert.pem

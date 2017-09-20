@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# this is a generic deploy_script that will work with any QNAP nas. You'll have to change the
+# host name of the nas itself, but otherwise it should just work.
+
 # $1 = domainname
 # $2 = private key
 # $3 = cert /scratch/services/dehydrated/certs/.../cert.pem
