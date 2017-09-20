@@ -1,0 +1,24 @@
+foobucket.joshgordon.us
+pyrelay.joshgordon.us
+minecraft.joshgordon.us
+mirror.beef.cafe
+webspace.bluesmoke.network
+plex.joshgordon.us
+plex.bluesmoke.network
+borg.bluesmoke.network
+gemstone.joshgordon.net
+bookstack.bluesmoke.network bookstack.joshgordon.us
+unifi.bluesmoke.network unifi.joshgordon.us
+relaybox.bluesmoke.network relaybox.joshgordon.us
+guacamole.joshgordon.us
+gitlab.beef.cafe
+mattermost.beef.cafe
+router.bluesmoke.network
+stream.joshgordon.us
+mythos.bluesmoke.network
+grafana.bluesmoke.network grafana.joshgordon.us
+influx.bluesmoke.network influx.joshgordon.us
+hass.joshgordon.us hass.bluesmoke.network
+gogs.joshgordon.us gogs.bluesmoke.network
+bluesmoke.network
+test.joshgordon.net
