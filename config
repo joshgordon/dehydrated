@@ -64,7 +64,7 @@ CHALLENGETYPE="dns-01"
 #
 # BASEDIR and WELLKNOWN variables are exported and can be used in an external program
 # default: <unset>
-HOOK=/scratch/services/dehydrated/hooks/letsencrypt-cloudflare-hook/hook.py
+HOOK=$SCRIPTDIR/hooks/letsencrypt-cloudflare-hook/hook.py
 
 # Chain clean_challenge|deploy_challenge arguments together into one hook call per certificate (default: no)
 #HOOK_CHAIN="no"
@@ -94,4 +94,4 @@ HOOK=/scratch/services/dehydrated/hooks/letsencrypt-cloudflare-hook/hook.py
 # Let's encrypt API key:
 source $SCRIPTDIR/secret
 export CF_DEBUG=true
-export DEPLOY_CERTS_DIR=/scratch/services/dehydrated/hooks/deploy_certs
+export DEPLOY_CERTS_DIR=$SCRIPTDIR/hooks/deploy_certs
