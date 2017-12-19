@@ -1,0 +1,12 @@
+#!/bin/sh
+
+# $1 = domainname
+# $2 = private key
+# $3 = cert /scratch/services/dehydrated/certs/.../cert.pem
+# $4 = fullchain /scratch/services/dehydrated/certs/.../fullchain.pem
+# $5 = ca chain /scratch/services/dehydrated/certs/.../chain.pem
+# $6 = timestamp 1505868437
+
+ssh $1 mkdir -p /root/certs/$1
+scp $2 $1:/root/certs/$1/privkey.pem
+scp $4 $1:/root/certs/$1/fullchain.pem

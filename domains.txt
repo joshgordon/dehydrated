@@ -34,7 +34,15 @@ legs.joshgordon.us
 louie.bluesmoke.network
 louie.joshgordon.us
 iso.joshgordon.us
+mythos.joshgordon.us
 
 plexpy.joshgordon.us
 ampache.joshgordon.us
 beef.cafe
+vrrp-test.bluesmoke.network
+
+jos4.com
+
+ocampa.bluesmoke.network
+beta.bluesmoke.network
+ubuntu.bluesmoke.network
