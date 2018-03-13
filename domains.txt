@@ -31,10 +31,13 @@ nexus.joshgordon.us
 joshgordon.us
 legs.bluesmoke.network
 legs.joshgordon.us
+burns.bluesmoke.network
+burns.joshgordon.us
 louie.bluesmoke.network
 louie.joshgordon.us
 iso.joshgordon.us
 mythos.joshgordon.us
+zoneminder.joshgordon.us
 
 plexpy.joshgordon.us
 ampache.joshgordon.us
@@ -46,3 +49,7 @@ jos4.com
 ocampa.bluesmoke.network
 beta.bluesmoke.network
 ubuntu.bluesmoke.network
+
+istherearelevantxkcdforthat.com www.istherearelevantxkcdforthat.com
+
+pfsense.joshgordon.us
