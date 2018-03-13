@@ -1,8 +1,9 @@
-# dehydrated
+# dehydrated [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=23P9DSJBTY7C8)
 
 ![](docs/logo.jpg)
 
 This is a client for signing certificates with an ACME-server (currently only provided by Let's Encrypt) implemented as a relatively simple bash-script.
+Dehydrated supports both ACME v1 and the new ACME v2 including support for wildcard certificates!
 
 It uses the `openssl` utility for everything related to actually handling keys and certificates, so you need to have that installed.
 
@@ -62,6 +63,7 @@ Parameters:
  --ipv4 (-4)                      Resolve names to IPv4 addresses only
  --ipv6 (-6)                      Resolve names to IPv6 addresses only
  --domain (-d) domain.tld         Use specified domain name(s) instead of domains.txt entry (one certificate!)
+ --alias certalias                Use specified name for certificate directory (and per-certificate config) instead of the primary domain (only used if --domain is specified)
  --keep-going (-g)                Keep going after encountering an error while creating/renewing multiple certificates in cron mode
  --force (-x)                     Force renew of certificate even if it is longer valid than value in RENEW_DAYS
  --no-lock (-n)                   Don't use lockfile (potentially dangerous!)
@@ -77,31 +79,22 @@ Parameters:
 
 ## Donate
 
-I'm having fun developing dehydrated, but it takes time, and time is money, at least that's what I've been told.
+I'm a student hacker with a few (unfortunately) quite expensive hobbies (self-hosting, virtualization clusters, routing,
+high-speed networking, embedded hardware, etc.).
+I'm really having fun playing around with hard- and software and I'm steadily learning new things.
+Without those hobbies I probably would never have started working on dehydrated to begin with :)
 
-I will definitively continue developing dehydrated for free, but if you want to support me you can do so using the following ways:
+I'd really appreciate if you could [donate a bit of money](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=23P9DSJBTY7C8)
+so I can buy cool stuff (while still being able to afford food :D).  
 
-### PayPal
+If you have hardware laying around that you think I'd enjoy playing with (e.g. decomissioned but still modern-ish servers,
+10G networking hardware, enterprise grade routers or APs, interesting ARM/MIPS boards, etc.) and that you would be willing
+to ship to me please contact me at `donations@dehydrated.de` or on Twitter [@lukas2511](https://twitter.com/lukas2511).
 
-[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=23P9DSJBTY7C8)
+If you want your name to be added to the [donations list](https://dehydrated.de/donations.html) please add a note or send me an
+email `donations@dehydrated.de`. I respect your privacy and won't publish your name without permission.
 
-### BitCoin
-
-Send bitcoins to 12487bHxcrREffTGwUDnoxF1uYxCA7ztKK
-
-### Server
-
-I'm still planning on building a bigger testing-suite for dehydrated, it would be really cool to have a big(ish) server running
-in a datacenter somewhere without having to pay for it... If you are a server provider and can offer me a (dedicated!) machine,
-please contact me at `donations@dehydrated.de`.
-
-### Other ways
-
-I always like to play around with modern(ish) network and computer gear, 10G switches and stuff, modern ARM boards
-(but please not that Raspberry Pi rubbish), tiny PCs for routing, etc.
-
-If you have something that seems of value and that you don't need anymore feel free to contact me at
-`donations@dehydrated.de`.
-
-Also here is my [Amazon Wishlist](http://www.amazon.de/registry/wishlist/1TUCFJK35IO4Q) :)
-
+Other ways of donating:
+ - [My Amazon Wishlist](http://www.amazon.de/registry/wishlist/1TUCFJK35IO4Q)
+ - Monero: 4Kkf4tF4r9DakxLj37HDXLJgmpVfQoFhT7JLDvXwtUZZMTbsK9spsAPXivWPAFcDUj6jHhY8hJSHX8Cb8ndMhKeQHPSkBZZiK89Fx8NTHk
+ - Bitcoin: 12487bHxcrREffTGwUDnoxF1uYxCA7ztKK

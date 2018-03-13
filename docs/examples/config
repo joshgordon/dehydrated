@@ -10,19 +10,26 @@
 # Default values of this config are in comments        #
 ########################################################
 
+# Which user should dehydrated run as? This will be implictly enforced when running as root
+#DEHYDRATED_USER=
+
+# Which group should dehydrated run as? This will be implictly enforced when running as root
+#DEHYDRATED_GROUP=
+
 # Resolve names to addresses of IP version only. (curl)
 # supported values: 4, 6
 # default: <unset>
 #IP_VERSION=
 
-# Path to certificate authority (default: https://acme-v01.api.letsencrypt.org/directory)
-#CA="https://acme-v01.api.letsencrypt.org/directory"
+# Path to certificate authority (default: https://acme-v02.api.letsencrypt.org/directory)
+#CA="https://acme-v02.api.letsencrypt.org/directory"
 
-# Path to certificate authority license terms redirect (default: https://acme-v01.api.letsencrypt.org/terms)
-#CA_TERMS="https://acme-v01.api.letsencrypt.org/terms"
-
-# Path to license agreement (default: <unset>)
-#LICENSE=""
+# Path to old certificate authority
+# Set this value to your old CA value when upgrading from ACMEv1 to ACMEv2 under a different endpoint.
+# If dehydrated detects an account-key for the old CA it will automatically reuse that key
+# instead of registering a new one.
+# default: https://acme-v01.api.letsencrypt.org/directory
+#OLDCA="https://acme-v01.api.letsencrypt.org/directory"
 
 # Which challenge should be used? Currently http-01 and dns-01 are supported
 #CHALLENGETYPE="http-01"
@@ -104,3 +111,6 @@
 
 # Automatic cleanup (default: no)
 #AUTO_CLEANUP="no"
+
+# ACME API version (default: auto)
+#API=auto
