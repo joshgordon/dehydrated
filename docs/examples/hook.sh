@@ -37,6 +37,32 @@ clean_challenge() {
     # printf 'server 127.0.0.1\nupdate delete _acme-challenge.%s TXT "%s"\nsend\n' "${DOMAIN}" "${TOKEN_VALUE}" | nsupdate -k /var/run/named/session.key
 }
 
+sync_cert() {
+    local KEYFILE="${1}" CERTFILE="${2}" FULLCHAINFILE="${3}" CHAINFILE="${4}" REQUESTFILE="${5}"
+
+    # This hook is called after the certificates have been created but before
+    # they are symlinked. This allows you to sync the files to disk to prevent
+    # creating a symlink to empty files on unexpected system crashes.
+    #
+    # This hook is not intended to be used for further processing of certificate
+    # files, see deploy_cert for that.
+    #
+    # Parameters:
+    # - KEYFILE
+    #   The path of the file containing the private key.
+    # - CERTFILE
+    #   The path of the file containing the signed certificate.
+    # - FULLCHAINFILE
+    #   The path of the file containing the full certificate chain.
+    # - CHAINFILE
+    #   The path of the file containing the intermediate certificate(s).
+    # - REQUESTFILE
+    #   The path of the file containing the certificate signing request.
+
+    # Simple example: sync the files before symlinking them
+    # sync "${KEYFILE}" "${CERTFILE} "${FULLCHAINFILE}" "${CHAINFILE}" "${REQUESTFILE}"
+}
+
 deploy_cert() {
     local DOMAIN="${1}" KEYFILE="${2}" CERTFILE="${3}" FULLCHAINFILE="${4}" CHAINFILE="${5}" TIMESTAMP="${6}"
 
@@ -63,6 +89,28 @@ deploy_cert() {
     # cp "${KEYFILE}" "${FULLCHAINFILE}" /etc/nginx/ssl/; chown -R nginx: /etc/nginx/ssl
     # systemctl reload nginx
 }
+
+deploy_ocsp() {
+    local DOMAIN="${1}" OCSPFILE="${2}" TIMESTAMP="${3}"
+
+    # This hook is called once for each updated ocsp stapling file that has
+    # been produced. Here you might, for instance, copy your new ocsp stapling
+    # files to service-specific locations and reload the service.
+    #
+    # Parameters:
+    # - DOMAIN
+    #   The primary domain name, i.e. the certificate common
+    #   name (CN).
+    # - OCSPFILE
+    #   The path of the ocsp stapling file
+    # - TIMESTAMP
+    #   Timestamp when the specified ocsp stapling file was created.
+
+    # Simple example: Copy file to nginx config
+    # cp "${OCSPFILE}" /etc/nginx/ssl/; chown -R nginx: /etc/nginx/ssl
+    # systemctl reload nginx
+}
+
 
 unchanged_cert() {
     local DOMAIN="${1}" KEYFILE="${2}" CERTFILE="${3}" FULLCHAINFILE="${4}" CHAINFILE="${5}"
@@ -116,6 +164,8 @@ request_failure() {
     #   The specified reason for the error.
     # - REQTYPE
     #   The kind of request that was made (GET, POST...)
+    # - HEADERS
+    #   HTTP headers returned by the CA
 
     # Simple example: Send mail to root
     # printf "Subject: HTTP request failed failed!\n\nA http request failed with status ${STATUSCODE}!" | sendmail root
@@ -154,13 +204,17 @@ startup_hook() {
 }
 
 exit_hook() {
+  local ERROR="${1:-}"
+
   # This hook is called at the end of the cron command and can be used to
   # do some final (cleanup or other) tasks.
-
-  :
+  #
+  # Parameters:
+  # - ERROR
+  #   Contains error message if dehydrated exits with error
 }
 
 HANDLER="$1"; shift
-if [[ "${HANDLER}" =~ ^(deploy_challenge|clean_challenge|deploy_cert|unchanged_cert|invalid_challenge|request_failure|generate_csr|startup_hook|exit_hook)$ ]]; then
+if [[ "${HANDLER}" =~ ^(deploy_challenge|clean_challenge|sync_cert|deploy_cert|deploy_ocsp|unchanged_cert|invalid_challenge|request_failure|generate_csr|startup_hook|exit_hook)$ ]]; then
   "$HANDLER" "$@"
 fi
