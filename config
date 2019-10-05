@@ -93,5 +93,5 @@ HOOK=$SCRIPTDIR/hooks/letsencrypt-cloudflare-hook/hook.py
 
 # Let's encrypt API key:
 source $SCRIPTDIR/secret
-export CF_DEBUG=true
+export CF_DEBUG=0
 export DEPLOY_CERTS_DIR=$SCRIPTDIR/hooks/deploy_certs

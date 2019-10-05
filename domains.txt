@@ -1,55 +1,14 @@
-foobucket.joshgordon.us
-pyrelay.joshgordon.us
-minecraft.joshgordon.us
 mirror.beef.cafe
-webspace.bluesmoke.network
-plex.joshgordon.us
-plex.bluesmoke.network
-borg.bluesmoke.network
-gemstone.joshgordon.net
-bookstack.bluesmoke.network bookstack.joshgordon.us
-unifi.bluesmoke.network unifi.joshgordon.us
-relaybox.bluesmoke.network relaybox.joshgordon.us
-guacamole.joshgordon.us
-gitlab.beef.cafe
-mattermost.beef.cafe
-router.bluesmoke.network
-router.joshgordon.us
-stream.joshgordon.us
-mythos.bluesmoke.network
-grafana.bluesmoke.network grafana.joshgordon.us
-influx.bluesmoke.network influx.joshgordon.us
-hass.joshgordon.us hass.bluesmoke.network
-gogs.joshgordon.us gogs.bluesmoke.network
-bluesmoke.network
-portainer.joshgordon.us portainer.bluesmoke.network
-wekan.joshgordon.us
-auth-gateway.bluesmoke.network
-auth-gateway.joshgordon.us
-jenkins.joshgordon.us
-nexus.joshgordon.us
-joshgordon.us
-legs.bluesmoke.network
-legs.joshgordon.us
-burns.bluesmoke.network
-burns.joshgordon.us
-louie.bluesmoke.network
-louie.joshgordon.us
-iso.joshgordon.us
-mythos.joshgordon.us
-zoneminder.joshgordon.us
+bluesmoke.network *.bluesmoke.network
+unifi.bluesmoke.network
 
-plexpy.joshgordon.us
-ampache.joshgordon.us
-beef.cafe
-vrrp-test.bluesmoke.network
+face.feed.beef.cafe
 
-jos4.com
+beef.cafe *.beef.cafe beef.cafe
+jos4.com *.jos4.com
+istherearelevantxkcdforthat.com *.istherearelevantxkcdforthat.com
 
-ocampa.bluesmoke.network
-beta.bluesmoke.network
-ubuntu.bluesmoke.network
-
-istherearelevantxkcdforthat.com www.istherearelevantxkcdforthat.com
-
-pfsense.joshgordon.us
+joshgordon.app *.joshgordon.app
+joshgordon.dev *.joshgordon.dev
+joshgordon.net *.joshgordon.net
+joshgordon.us *.joshgordon.us
