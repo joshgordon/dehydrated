@@ -1,8 +1,5 @@
 #!/bin/sh
 
-# this is a generic deploy_script that will work with any QNAP nas. You'll have to change the
-# host name of the nas itself, but otherwise it should just work.
-
 # $1 = domainname
 # $2 = private key
 # $3 = cert /scratch/services/dehydrated/certs/.../cert.pem
@@ -10,5 +7,5 @@
 # $5 = ca chain /scratch/services/dehydrated/certs/.../chain.pem
 # $6 = timestamp 1505868437
 
-cat $2 $4 | ssh admin@mythos "cat > /etc/stunnel/stunnel.pem"
-ssh admin@mythos /etc/init.d/stunnel.sh restart
+# kick all the nginx's to get it to reload the new certs.
+docker ps | awk '/nginx/ {print $1}'  | xargs docker kill -s HUP

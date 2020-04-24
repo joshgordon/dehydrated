@@ -1,6 +1,5 @@
-mirror.beef.cafe
 bluesmoke.network *.bluesmoke.network
-unifi.bluesmoke.network
+unifi.bluesmoke.network unifi-controller.bluesmoke.network
 
 face.feed.beef.cafe
 
@@ -9,6 +8,12 @@ jos4.com *.jos4.com
 istherearelevantxkcdforthat.com *.istherearelevantxkcdforthat.com
 
 joshgordon.app *.joshgordon.app
-joshgordon.dev *.joshgordon.dev
+# joshgordon.dev *.joshgordon.dev
 joshgordon.net *.joshgordon.net
 joshgordon.us *.joshgordon.us
+
+bart.bluesmoke.network
+homer.bluesmoke.network
+
+blueiris.bluesmoke.network
+krusty.bluesmoke.network

@@ -7,4 +7,6 @@
 # $5 = ca chain /scratch/services/dehydrated/certs/.../chain.pem
 # $6 = timestamp 1505868437
 
-cat $2 $4 > /scratch/services/haproxy/certs/$1.crt
+cp $2 /scratch/services/unifi/unifi/cert/privkey.pem
+cp $3 /scratch/services/unifi/unifi/cert/cert.pem
+cp $5 /scratch/services/unifi/unifi/cert/chain.pem

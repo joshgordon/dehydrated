@@ -1,0 +1,38 @@
+#!/bin/sh
+
+set -x
+
+# $1 = domainname
+# $2 = private key
+# $3 = cert /scratch/services/dehydrated/certs/.../cert.pem
+# $4 = fullchain /scratch/services/dehydrated/certs/.../fullchain.pem
+# $5 = ca chain /scratch/services/dehydrated/certs/.../chain.pem
+# $6 = timestamp 1505868437
+
+scp $4 "$1:C:/ProgramData/stunnel/stunnel.pem"
+scp $2 "$1:C:/ProgramData/stunnel/stunnel_key.pem"
+ssh $1 net stop stunnel
+ssh $1 net start stunnel
+
+
+# deal with RDP certs
+p12_path=${2%pem}p12
+openssl pkcs12 -in $4 -inkey $2 -export -password pass:verysecret -out $p12_path
+ssh $1 mkdir -Force C:/ProgramData/Certs
+scp $p12_path $1:C:/ProgramData/Certs
+
+p12_filename=$(basename $p12_path)
+
+
+tempfile=$(mktemp)
+cat > $tempfile <<EOF
+\$tsgs = gwmi -class "Win32_TSGeneralSetting" -Namespace root\cimv2\terminalservices -Filter "TerminalName='RDP-tcp'"
+\$pass = ConvertTo-SecureString -string 'verysecret' -AsPlainText -Force
+\$thumb = (Import-PfxCertificate -Password \$pass -filepath C:/ProgramData/Certs/$p12_filename -CertStoreLocation Cert:\LocalMachine\My).Thumbprint
+swmi -path \$tsgs.__path -argument @{SSLCertificateSHA1Hash="\$thumb"}
+EOF
+
+scp $tempfile $1:C:/ProgramData/Certs/UpdateRDP.ps1
+ssh $1 '& C:/ProgramData/Certs/UpdateRDP.ps1'
+
+rm -f $tempfile
